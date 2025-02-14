@@ -26,11 +26,12 @@
     <h1 style="text-align: center;">Tic-Tac-Toe</h1>
     <div class="error" id="error"></div>
     <div style="text-align: center;">
-        <label for="mode">Play against:</label>
-        <select id="mode" onchange="setMode()">
-            <option value="player">Player</option>
-            <option value="computer">Computer</option>
-        </select>
+        <label>
+            <input type="radio" name="mode" value="player" checked onclick="setMode('player')"> Play against another player
+        </label>
+        <label>
+            <input type="radio" name="mode" value="computer" onclick="setMode('computer')"> Play against the computer
+        </label>
     </div>
     <table>
         {% for row in board %}
@@ -61,8 +62,7 @@
             });
         }
 
-        function setMode() {
-            const mode = document.getElementById('mode').value;
+        function setMode(mode) {
             fetch('/set_mode', {
                 method: 'POST',
                 headers: {
