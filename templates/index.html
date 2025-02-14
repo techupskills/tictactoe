@@ -77,10 +77,8 @@
             .then(data => {
                 if (data.error) {
                     document.getElementById('error').innerText = data.error;
-                    playSound('invalid');
                 } else {
                     document.getElementById('error').innerText = '';
-                    playSound('valid');
                     location.reload();
                 }
             });
@@ -100,20 +98,6 @@
                     location.reload();
                 }
             });
-        }
-
-        function playSound(type) {
-            let sound;
-            if (type === 'valid') {
-                sound = new Audio('valid-move.mp3');
-            } else if (type === 'invalid') {
-                sound = new Audio('invalid-move.mp3');
-            } else if (type === 'win') {
-                sound = new Audio('win.mp3');
-            } else if (type === 'draw') {
-                sound = new Audio('draw.mp3');
-            }
-            sound.play();
         }
     </script>
 </body>

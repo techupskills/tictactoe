@@ -18,11 +18,6 @@ This repository contains a simple implementation of the classic Tic-Tac-Toe game
   - Hover effects on the cells
   - Custom font for the game title and player labels
   - Animations for player moves, such as a fade-in effect for the marks
-- Sound effects
-  - A sound effect plays when a player makes a move
-  - Different sound effects for valid and invalid moves
-  - A celebratory sound plays when a player wins the game
-  - A draw sound plays when the game ends in a draw
 
 ### How to Run
 
@@ -38,10 +33,10 @@ pip install -r requirements.txt
 5. Run the following command to start the web application:
 
 ```bash
-python app.py
+python main.py
 ```
 
-6. Open your web browser and go to `http://127.0.0.1:5000` to play the game.
+6. Open your web browser and go to `http://127.0.0.1:8000` to play the game.
 
 ### Playing Against the Computer
 
