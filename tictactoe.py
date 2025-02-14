@@ -1,4 +1,5 @@
 import os
+import random
 
 def print_board(board):
     os.system('clear')
@@ -35,14 +36,22 @@ def get_move(player):
         except ValueError:
             print("Invalid move. Please enter a number between 1 and 9.")
 
+def get_computer_move(board):
+    available_moves = [(i, j) for i in range(3) for j in range(3) if board[i][j] == " "]
+    return random.choice(available_moves)
+
 def main():
     board = [[" " for _ in range(3)] for _ in range(3)]
     current_player = "X"
+    play_against_computer = input("Do you want to play against the computer? (y/n): ").lower() == 'y'
 
     while True:
         print_board(board)
-        move = get_move(current_player)
-        row, col = divmod(move, 3)
+        if current_player == "X" or not play_against_computer:
+            move = get_move(current_player)
+            row, col = divmod(move, 3)
+        else:
+            row, col = get_computer_move(board)
 
         if board[row][col] != " ":
             print("Invalid move. The cell is already occupied. Try again.")
