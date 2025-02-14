@@ -15,15 +15,37 @@
             text-align: center;
             font-size: 24px;
             border: 1px solid #000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        td:hover {
+            background-color: #f0f0f0;
+        }
+        .X {
+            color: blue;
+        }
+        .O {
+            color: red;
         }
         .error {
             color: red;
             text-align: center;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Tic-Tac-Toe</h1>
+    <h1>Tic-Tac-Toe</h1>
     <div class="error" id="error"></div>
     <div style="text-align: center;">
         <label>
@@ -37,7 +59,7 @@
         {% for row in board %}
         <tr>
             {% for cell in row %}
-            <td onclick="makeMove({{ loop.index0 }}, {{ loop.parent.index0 }})">{{ cell }}</td>
+            <td class="{{ cell }} fade-in" onclick="makeMove({{ loop.index0 }}, {{ loop.parent.index0 }})">{{ cell }}</td>
             {% endfor %}
         </tr>
         {% endfor %}
@@ -55,8 +77,10 @@
             .then(data => {
                 if (data.error) {
                     document.getElementById('error').innerText = data.error;
+                    playSound('invalid');
                 } else {
                     document.getElementById('error').innerText = '';
+                    playSound('valid');
                     location.reload();
                 }
             });
@@ -76,6 +100,20 @@
                     location.reload();
                 }
             });
+        }
+
+        function playSound(type) {
+            let sound;
+            if (type === 'valid') {
+                sound = new Audio('valid-move.mp3');
+            } else if (type === 'invalid') {
+                sound = new Audio('invalid-move.mp3');
+            } else if (type === 'win') {
+                sound = new Audio('win.mp3');
+            } else if (type === 'draw') {
+                sound = new Audio('draw.mp3');
+            }
+            sound.play();
         }
     </script>
 </body>

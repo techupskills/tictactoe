@@ -13,6 +13,16 @@ This repository contains a simple implementation of the classic Tic-Tac-Toe game
 - The game checks for a win or a draw after each move
 - Handles invalid moves by displaying an error message and prompting for a new move
 - Option to play against the computer
+- Enhanced visual design with CSS styles
+  - Different colors for X and O marks
+  - Hover effects on the cells
+  - Custom font for the game title and player labels
+  - Animations for player moves, such as a fade-in effect for the marks
+- Sound effects
+  - A sound effect plays when a player makes a move
+  - Different sound effects for valid and invalid moves
+  - A celebratory sound plays when a player wins the game
+  - A draw sound plays when the game ends in a draw
 
 ### How to Run
 
